@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Cars</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+    <!--<link rel="stylesheet" href="car-style.css">-->
+</head>
+
+<body>
+    <div>
+        <button id="push">PUSH!</button>
+        <button id="break">BREAK</button>
+    </div>
+    <div id="car-container">
+
+    </div>
+</body>
+<script type="module">
+    import {Car} from './js/script.js';
+    let currentSpeed = 40;
+    const container = document.getElementById('car-container');
+    const car = new Car();
+    car.render({parentNode: container, speed: currentSpeed});
+
+    document.getElementById('push').onclick = function() { 
+        if(currentSpeed < 200) currentSpeed+=5;
+        car.render({parentNode: container, speed: currentSpeed});
+    };
+    document.getElementById('break').onclick = function() { 
+        if(currentSpeed > 6) currentSpeed-=5;        
+        car.render({parentNode: container, speed: currentSpeed});
+
+    };
+</script>
+</html>
